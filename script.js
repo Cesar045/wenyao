@@ -2399,6 +2399,111 @@ function playDuplicateSound() {
         });
 
 }
+// ========================================
+// CÁMARA DE INCIDENCIAS
+// ========================================
+
+function takeIncidentPhoto() {
+
+    const photoInput =
+        document.getElementById("incidentPhoto");
+
+    if (!photoInput) {
+        console.error(
+            "No se encontró el campo de fotografía"
+        );
+        return;
+    }
+
+    photoInput.click();
+
+}
+// ========================================
+// VISTA PREVIA DE FOTOGRAFÍA
+// ========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const photoInput =
+        document.getElementById("incidentPhoto");
+
+    const photoPreview =
+        document.getElementById("incidentPhotoPreview");
+
+    if (!photoInput || !photoPreview) {
+        return;
+    }
+
+    photoInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function (event) {
+
+            photoPreview.innerHTML = `
+                <img
+                    src="${event.target.result}"
+                    alt="Fotografía de incidencia"
+                    style="
+                        max-width: 100%;
+                        max-height: 300px;
+                        border-radius: 12px;
+                        object-fit: contain;
+                    "
+                >
+            `;
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+});
+
+// ========================================
+// ABRIR INCIDENCIAS
+// ========================================
+
+function openIncidents() {
+
+    const incidentsPage =
+        document.getElementById("incidentsPage");
+
+    if (!incidentsPage) {
+
+        alert("No se encontró la página de Incidencias");
+
+        return;
+    }
+
+    incidentsPage.style.display = "block";
+
+}
 
 
-    
+function closeIncidents() {
+
+    const incidentsPage =
+        document.getElementById("incidentsPage");
+
+    if (incidentsPage) {
+        incidentsPage.style.display = "none";
+    }
+
+    // Regresar al menú principal
+    const homePage =
+        document.querySelector(".home-page");
+
+    if (homePage) {
+        homePage.style.display = "block";
+    }
+
+}  
