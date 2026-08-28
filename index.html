@@ -148,6 +148,12 @@ creado por cano
                 <p>Registrar entradas y salidas</p>
             </div>
 
+<div class="menu-card" onclick="openIncidents()">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <h3>Incidencias</h3>
+    <p>Registrar y consultar incidencias</p>
+</div>
+
             <div class="menu-card" onclick="openReports()">
                 <i class="fa-solid fa-chart-column"></i>
                 <h3>Reportes</h3>
@@ -534,6 +540,43 @@ creado por cano
     </section>
 
 </div>
+
+<!-- ========================================
+     PÁGINA DE INCIDENCIAS
+======================================== -->
+
+<div id="incidentsPage" style="display:none;">
+
+    <button
+        type="button"
+        onclick="closeIncidents()"
+        class="inventory-back-button"
+    >
+        <i class="fa-solid fa-arrow-left"></i>
+        Inicio
+    </button>
+
+    <div style="padding:30px;">
+
+        <h1>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            INCIDENCIAS
+        </h1>
+
+        <p>
+            Registro de incidencias de inventario
+        </p>
+
+        <hr>
+
+        <h2>Nueva incidencia</h2>
+
+        <p>Esta pantalla está funcionando correctamente.</p>
+
+    </div>
+
+</div>
+
 <!-- ========================================
      MÓDULO ENTRADAS / SALIDAS
 ======================================== -->
@@ -742,7 +785,279 @@ creado por cano
         </div>
 
     </div>
+<!-- ========================================
+     MÓDULO INCIDENCIAS
+======================================== -->
+<div id="incidentsPage" class="incidents-page">
 
+    <!-- ENCABEZADO -->
+    <div class="incidents-header">
+
+        <div class="incidents-title-area">
+
+            <button class="inventory-back-button" onclick="closeIncidents()">
+                <i class="fa-solid fa-arrow-left"></i>
+                Inicio
+            </button>
+
+            <div class="incidents-title">
+                <div class="incidents-title-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+                    <h1>INCIDENCIAS</h1>
+                    <p>Registro y seguimiento de incidencias</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="movements-user-box">
+            <i class="fa-solid fa-user"></i>
+
+            <div>
+                <small>Sesión actual</small>
+                <strong id="incidentsUserName">Usuario</strong>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- FORMULARIO -->
+    <section class="incidents-form-panel">
+
+        <div class="incidents-form-header">
+            <div>
+                <h2>
+                    <i class="fa-solid fa-file-circle-exclamation"></i>
+                    NUEVA INCIDENCIA
+                </h2>
+
+                <p>Registra cualquier problema encontrado durante el inventario.</p>
+            </div>
+        </div>
+
+
+        <div class="incidents-form-grid">
+
+            <!-- CÓDIGO -->
+            <div class="incident-field">
+
+                <label for="incidentCode">
+                    CÓDIGO
+                </label>
+
+                <input
+                    type="text"
+                    id="incidentCode"
+                    placeholder="Escanea el código..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- UBICACIÓN -->
+            <div class="incident-field">
+
+                <label for="incidentLocation">
+                    UBICACIÓN
+                </label>
+
+                <input
+                    type="text"
+                    id="incidentLocation"
+                    placeholder="Escanea la ubicación..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- TIPO -->
+            <div class="incident-field">
+
+                <label for="incidentType">
+                    TIPO DE INCIDENCIA
+                </label>
+
+                <select id="incidentType">
+
+                    <option value="">
+                        Selecciona una incidencia
+                    </option>
+
+                    <option value="Código incorrecto">
+                        Código incorrecto
+                    </option>
+
+                    <option value="Producto dañado">
+                        Producto dañado
+                    </option>
+
+                    <option value="Cantidad incorrecta">
+                        Cantidad incorrecta
+                    </option>
+
+                    <option value="Ubicación incorrecta">
+                        Ubicación incorrecta
+                    </option>
+
+                    <option value="Código duplicado">
+                        Código duplicado
+                    </option>
+
+                    <option value="Producto faltante">
+                        Producto faltante
+                    </option>
+
+                    <option value="Otro">
+                        Otro
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DESCRIPCIÓN -->
+            <div class="incident-field incident-description-field">
+
+                <label for="incidentDescription">
+                    DESCRIPCIÓN
+                </label>
+
+                <textarea
+                    id="incidentDescription"
+                    rows="4"
+                    placeholder="Describe lo ocurrido..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- FOTOGRAFÍA -->
+            <div class="incident-photo-field">
+
+                <label>
+                    NOTA FOTOGRÁFICA
+                </label>
+
+                <button
+                    type="button"
+                    class="incident-photo-button"
+                    onclick="takeIncidentPhoto()"
+                >
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    <span>
+                        TOMAR FOTOGRAFÍA
+                    </span>
+
+                </button>
+
+                <input
+                    type="file"
+                    id="incidentPhoto"
+                    accept="image/*"
+                    capture="environment"
+                    style="display:none;"
+                >
+
+                <div
+                    id="incidentPhotoPreview"
+                    class="incident-photo-preview"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTÓN GUARDAR -->
+
+        <div class="incidents-save-area">
+
+            <button
+                type="button"
+                class="incident-save-button"
+                onclick="saveIncidentFromWenyao()"
+            >
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                GUARDAR INCIDENCIA
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTORIAL -->
+
+    <section class="incidents-history-panel">
+
+        <div class="incidents-history-header">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    HISTORIAL DE INCIDENCIAS
+                </h2>
+
+                <p>
+                    Consulta las incidencias registradas.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="incidents-table-container">
+
+            <table class="incidents-table">
+
+                <thead>
+
+                    <tr>
+                        <th>FECHA</th>
+                        <th>UBICACIÓN</th>
+                        <th>CÓDIGO</th>
+                        <th>TIPO</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>USUARIO</th>
+                        <th>FOTO</th>
+                        <th>ESTATUS</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="incidentsTable">
+
+                    <tr>
+
+                        <td colspan="8">
+                            Aún no hay incidencias registradas.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
 
     <!-- FORMULARIO -->
     <section class="entry-form-container">
@@ -1016,7 +1331,7 @@ creado por cano
         </div>
 
 
-        <<div class="scanner-content">
+        <div class="scanner-content">
 
     <!-- UBICACION -->
     <div class="location-box">
