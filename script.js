@@ -2505,5 +2505,4 @@ function closeIncidents() {
     if (homePage) {
         homePage.style.display = "block";
     }
-
 }  
