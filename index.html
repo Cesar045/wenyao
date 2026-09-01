@@ -1,34 +1,69 @@
-creado por cano
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>WENYAO | Sistema de Inventario</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- ICONO DE LA PESTAÑA -->
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="logo.jpg"
+    >
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
 </head>
 
-<body>
-    <!-- =========================
-     PANTALLA DE INICIO DE SESIÓN
-========================= -->
 
-<section id="loginPage" class="login-page">
+<body>
+
+
+<!-- ==================================================
+     LOGIN
+================================================== -->
+
+<section
+    id="loginPage"
+    class="login-page"
+>
 
     <div class="login-box">
 
-        <img src="logo.jpg" alt="WENYAO Logo" class="login-logo">
+        <img
+            src="logo.jpg"
+            alt="WENYAO Logo"
+            class="login-logo"
+        >
 
         <h1>Bienvenido a WENYAO</h1>
 
-        <p>Ingresa tu nombre para comenzar</p>
+        <p>
+            Ingresa tu nombre para comenzar
+        </p>
 
-        <label for="loginUser">Nombre de usuario</label>
+
+        <label for="loginUser">
+            Nombre de usuario
+        </label>
 
         <input
             type="text"
@@ -36,18 +71,41 @@ creado por cano
             placeholder="Escribe tu nombre"
             autocomplete="off"
         >
-        <label for="loginRole">Selecciona tu rol</label>
 
-<select id="loginRole">
-    <option value="">-- Selecciona tu rol --</option>
-    <option value="Auxiliar de Almacén">Auxiliar de Almacén</option>
-    <option value="Supervisor">Supervisor</option>
-    <option value="Gerente">Gerente</option>
-</select>
 
-        <button class="login-button" onclick="loginUser()">
+        <label for="loginRole">
+            Selecciona tu rol
+        </label>
+
+        <select id="loginRole">
+
+            <option value="">
+                -- Selecciona tu rol --
+            </option>
+
+            <option value="Auxiliar de Almacén">
+                Auxiliar de Almacén
+            </option>
+
+            <option value="Supervisor">
+                Supervisor
+            </option>
+
+            <option value="Gerente">
+                Gerente
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="login-button"
+            onclick="loginUser()"
+        >
             INGRESAR
         </button>
+
 
         <p id="loginMessage"></p>
 
@@ -55,165 +113,389 @@ creado por cano
 
 </section>
 
-    <!-- ENCABEZADO -->
-    <header class="header">
-        <div class="logo">
-            <img src="logo.jpg" alt="Logo WENYAO" class="logo-image">
-
-            <div>
-                <h1>WENYAO</h1>
-                <span>Sistema de Inventario</span>
-            </div>
-        </div>
-
-        <div class="header-right">
-            <div class="user-menu">
-                <i class="fa-solid fa-circle-user"></i>
-                <span>Usuario: <strong>Cano</strong></span>
-            </div>
-
-            <div class="language-container">
-                <button class="language-button" onclick="toggleLanguage()">
-                    <i class="fa-solid fa-globe"></i>
-                    <span id="selectedLanguage">Español</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-
-                <div class="language-menu" id="languageMenu">
-                    <button onclick="changeLanguage('es')">🇲🇽 Español</button>
-                    <button onclick="changeLanguage('fr')">🇫🇷 Français</button>
-                    <button onclick="changeLanguage('zh')">🇨🇳 中文</button>
-                </div>
-            </div>
-        </div>
-    </header>
 
 
-    <!-- PANTALLA PRINCIPAL -->
-    <main id="homePage">
+<!-- ==================================================
+     ENCABEZADO PRINCIPAL
+================================================== -->
 
-        <section class="welcome">
+<header class="header">
 
-            <div class="welcome-icon">
-                <img src="logo.jpg" alt="Logo WENYAO" class="welcome-logo">
-            </div>
+    <div class="logo">
 
-            <h2 id="welcomeTitle">¡Bienvenido!</h2>
+        <img
+            src="logo.jpg"
+            alt="Logo WENYAO"
+            class="logo-image"
+        >
 
-            <p id="welcomeText">
-                Sistema de inventario y control de productos
-            </p>
+        <div>
 
-            <div class="user-card">
+            <h1>WENYAO</h1>
 
-                <div class="user-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </div>
+            <span>
+                Sistema de Inventario
+            </span>
 
-                <div>
-                    <h3 id="userName">Usuario: Cano</h3>
-
-                    <p>
-                        <span id="roleText">Rol:</span>
-                        <strong id="roleName">Supervisor</strong>
-                        <button class="logout-button" onclick="logoutUser()">
-    🚪 CERRAR SESIÓN
-</button>
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- MENU PRINCIPAL -->
-        <section class="menu-grid">
-
-            <div class="menu-card" onclick="openScanner()">
-                <i class="fa-solid fa-barcode"></i>
-                <h3>Escanear</h3>
-                <p>Escanear códigos de productos</p>
-            </div>
-
-            <div class="menu-card" onclick="openInventory()">
-                <i class="fa-solid fa-clipboard-list"></i>
-                <h3>Inventario</h3>
-                <p>Ver y gestionar inventario</p>
-            </div>
-
-           <div class="menu-card" onclick="openMovements()">
-                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                <h3>Entradas / Salidas</h3>
-                <p>Registrar entradas y salidas</p>
-            </div>
-
-<div class="menu-card" onclick="openIncidents()">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    <h3>Incidencias</h3>
-    <p>Registrar y consultar incidencias</p>
-</div>
-
-            <div class="menu-card" onclick="openReports()">
-                <i class="fa-solid fa-chart-column"></i>
-                <h3>Reportes</h3>
-                <p>Ver reportes y estadísticas</p>
-            </div>
-
-            <div class="menu-card">
-                <i class="fa-solid fa-gear"></i>
-                <h3>Configuración</h3>
-                <p>Ajustes del sistema</p>
-            </div>
-
-        </section>
-
-    </main>
-
-<!-- =========================
-     MÓDULO INVENTARIO NUEVO
-========================= -->
-<div id="inventoryPage" class="inventory-page">
-
-    <!-- ENCABEZADO -->
-    <div class="inventory-header">
-
-        <div class="inventory-header-left">
-
-            <button class="inventory-back-button" onclick="closeInventory()">
-                <i class="fa-solid fa-arrow-left"></i>
-                Inicio
-            </button>
-
-            <div class="inventory-heading">
-                <div class="inventory-heading-icon">
-                    <i class="fa-solid fa-warehouse"></i>
-                </div>
-
-                <div>
-                    <h1>INVENTARIO GENERAL</h1>
-                    <p>Consulta el inventario organizado por ubicación</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="inventory-user-box">
-            <i class="fa-solid fa-user"></i>
-
-            <div>
-                <small>Sesión actual</small>
-                <strong id="inventoryUserName">Usuario</strong>
-            </div>
         </div>
 
     </div>
 
 
+    <div class="header-right">
+
+        <div class="user-menu">
+
+            <i class="fa-solid fa-circle-user"></i>
+
+            <span>
+                Usuario:
+                <strong id="headerUserName">
+                    Cano
+                </strong>
+            </span>
+
+        </div>
+
+
+        <div class="language-container">
+
+            <button
+                type="button"
+                class="language-button"
+                onclick="toggleLanguage()"
+            >
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span id="selectedLanguage">
+                    Español
+                </span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+            <div
+                class="language-menu"
+                id="languageMenu"
+            >
+
+                <button
+                    type="button"
+                    onclick="changeLanguage('es')"
+                >
+                    🇲🇽 Español
+                </button>
+
+                <button
+                    type="button"
+                    onclick="changeLanguage('fr')"
+                >
+                    🇫🇷 Français
+                </button>
+
+                <button
+                    type="button"
+                    onclick="changeLanguage('zh')"
+                >
+                    🇨🇳 中文
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==================================================
+     INICIO
+================================================== -->
+
+<main id="homePage">
+
+    <section class="welcome">
+
+        <div class="welcome-icon">
+
+            <img
+                src="logo.jpg"
+                alt="Logo WENYAO"
+                class="welcome-logo"
+            >
+
+        </div>
+
+
+        <h2 id="welcomeTitle">
+            ¡Bienvenido!
+        </h2>
+
+
+        <p id="welcomeText">
+            Sistema de inventario y control de productos
+        </p>
+
+
+        <div class="user-card">
+
+            <div class="user-avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3 id="userName">
+                    Usuario: Cano
+                </h3>
+
+                <p>
+
+                    <span id="roleText">
+                        Rol:
+                    </span>
+
+                    <strong id="roleName">
+                        Supervisor
+                    </strong>
+
+
+                    <button
+                        type="button"
+                        class="logout-button"
+                        onclick="logoutUser()"
+                    >
+                        🚪 CERRAR SESIÓN
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         MENU PRINCIPAL
+    ================================================== -->
+
+    <section class="menu-grid">
+
+
+        <div
+            class="menu-card"
+            onclick="openScanner()"
+        >
+
+            <i class="fa-solid fa-barcode"></i>
+
+            <h3>
+                Escanear
+            </h3>
+
+            <p>
+                Escanear códigos de productos
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="menu-card"
+            onclick="openInventory()"
+        >
+
+            <i class="fa-solid fa-clipboard-list"></i>
+
+            <h3>
+                Inventario
+            </h3>
+
+            <p>
+                Ver y gestionar inventario
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="menu-card"
+            onclick="openMovements()"
+        >
+
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+            <h3>
+                Entradas / Salidas
+            </h3>
+
+            <p>
+                Registrar entradas y salidas
+            </p>
+
+        </div>
+
+
+
+        <!-- ===============================
+             INCIDENCIAS
+        ================================ -->
+
+        <div
+            class="menu-card"
+            onclick="openIncidents()"
+        >
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <h3>
+                Incidencias
+            </h3>
+
+            <p>
+                Registrar y consultar incidencias
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="menu-card"
+            onclick="openReports()"
+        >
+
+            <i class="fa-solid fa-chart-column"></i>
+
+            <h3>
+                Reportes
+            </h3>
+
+            <p>
+                Ver reportes y estadísticas
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="menu-card"
+            onclick="openSettings()"
+        >
+
+            <i class="fa-solid fa-gear"></i>
+
+            <h3>
+                Configuración
+            </h3>
+
+            <p>
+                Ajustes del sistema
+            </p>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- ==================================================
+     INVENTARIO
+================================================== -->
+
+<div
+    id="inventoryPage"
+    class="inventory-page"
+>
+
+    <div class="inventory-header">
+
+        <div class="inventory-header-left">
+
+            <button
+                type="button"
+                class="inventory-back-button"
+                onclick="closeInventory()"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Inicio
+
+            </button>
+
+
+            <div class="inventory-heading">
+
+                <div class="inventory-heading-icon">
+
+                    <i class="fa-solid fa-warehouse"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        INVENTARIO GENERAL
+                    </h1>
+
+                    <p>
+                        Consulta el inventario organizado por ubicación
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="inventory-user-box">
+
+            <i class="fa-solid fa-user"></i>
+
+            <div>
+
+                <small>
+                    Sesión actual
+                </small>
+
+                <strong id="inventoryUserName">
+                    Usuario
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
     <!-- BUSCADOR -->
+
     <div class="inventory-search-section">
 
         <div class="inventory-search-box">
+
             <i class="fa-solid fa-magnifying-glass"></i>
 
             <input
@@ -222,205 +504,219 @@ creado por cano
                 placeholder="Buscar por código o ubicación..."
                 oninput="filterInventory()"
             >
+
         </div>
 
-        <button class="inventory-filter-button">
+
+        <button
+            type="button"
+            class="inventory-filter-button"
+        >
+
             <i class="fa-solid fa-sliders"></i>
+
             Filtros
+
         </button>
 
     </div>
 
 
-    <!-- TARJETAS -->
+
+    <!-- ESTADÍSTICAS -->
+
     <section class="inventory-stats">
 
+
         <div class="inventory-stat-card">
+
             <div class="inventory-stat-icon products">
+
                 <i class="fa-solid fa-boxes-stacked"></i>
+
             </div>
 
             <div>
-                <span>Total productos</span>
-                <strong id="inventoryTotalProducts">0</strong>
-                <small>Códigos registrados</small>
+
+                <span>
+                    Total productos
+                </span>
+
+                <strong id="inventoryTotalProducts">
+                    0
+                </strong>
+
+                <small>
+                    Códigos registrados
+                </small>
+
             </div>
+
         </div>
 
 
+
         <div class="inventory-stat-card">
+
             <div class="inventory-stat-icon quantity">
+
                 <i class="fa-solid fa-cubes"></i>
+
             </div>
 
             <div>
-                <span>Cantidad total</span>
-                <strong id="inventoryTotalQuantity">0</strong>
-                <small>Unidades registradas</small>
+
+                <span>
+                    Cantidad total
+                </span>
+
+                <strong id="inventoryTotalQuantity">
+                    0
+                </strong>
+
+                <small>
+                    Unidades registradas
+                </small>
+
             </div>
+
         </div>
 
 
+
         <div class="inventory-stat-card">
+
             <div class="inventory-stat-icon locations">
+
                 <i class="fa-solid fa-location-dot"></i>
+
             </div>
 
             <div>
-                <span>Ubicaciones</span>
-                <strong id="inventoryTotalLocations">0</strong>
-                <small>Ubicaciones activas</small>
+
+                <span>
+                    Ubicaciones
+                </span>
+
+                <strong id="inventoryTotalLocations">
+                    0
+                </strong>
+
+                <small>
+                    Ubicaciones activas
+                </small>
+
             </div>
+
         </div>
+
 
 
         <div class="inventory-stat-card">
+
             <div class="inventory-stat-icon status">
+
                 <i class="fa-solid fa-circle-check"></i>
+
             </div>
 
             <div>
-                <span>Estado</span>
-                <strong class="inventory-status-text">ACTIVO</strong>
-                <small>Inventario disponible</small>
+
+                <span>
+                    Estado
+                </span>
+
+                <strong class="inventory-status-text">
+                    ACTIVO
+                </strong>
+
+                <small>
+                    Inventario disponible
+                </small>
+
             </div>
+
         </div>
+
 
     </section>
 
 
-    <!-- LISTADO POR UBICACIONES -->
+
+    <!-- TABLA -->
+
     <section class="inventory-main-panel">
 
         <div class="inventory-panel-header">
 
             <div>
+
                 <h2>
+
                     <i class="fa-solid fa-map-location-dot"></i>
+
                     INVENTARIO POR UBICACIÓN
+
                 </h2>
 
-                <p>Selecciona una ubicación para consultar sus productos</p>
+                <p>
+                    Selecciona una ubicación para consultar sus productos
+                </p>
+
             </div>
 
+
             <div class="inventory-panel-count">
-                <span id="inventoryLocationCount">0</span>
+
+                <span id="inventoryLocationCount">
+                    0
+                </span>
+
                 ubicaciones
+
             </div>
 
         </div>
 
 
-        <!-- TABLA -->
+
         <div class="inventory-table-container">
 
             <table class="inventory-modern-table">
 
                 <thead>
+
                     <tr>
+
                         <th>
-                            <i class="fa-solid fa-location-dot"></i>
                             UBICACIÓN
                         </th>
 
                         <th>
-                            <i class="fa-solid fa-barcode"></i>
                             CÓDIGOS
                         </th>
 
                         <th>
-                            <i class="fa-solid fa-cubes"></i>
                             CANTIDAD TOTAL
                         </th>
 
                         <th>
-                            <i class="fa-solid fa-eye"></i>
                             DETALLES
                         </th>
+
                     </tr>
+
                 </thead>
+
 
                 <tbody id="inventoryTable">
 
-                    <!-- EJEMPLOS VISUALES -->
                     <tr>
-                        <td>
-                            <div class="location-cell">
-                                <div class="location-icon">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <strong>A-01</strong>
-                            </div>
+
+                        <td colspan="4">
+                            No hay inventario disponible.
                         </td>
 
-                        <td>
-                            <span class="code-badge">0 códigos</span>
-                        </td>
-
-                        <td>
-                            <strong class="quantity-value">0</strong>
-                        </td>
-
-                        <td>
-                            <button class="view-location-button">
-                                Ver inventario
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <div class="location-cell">
-                                <div class="location-icon">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <strong>A-02</strong>
-                            </div>
-                        </td>
-
-                        <td>
-                            <span class="code-badge">0 códigos</span>
-                        </td>
-
-                        <td>
-                            <strong class="quantity-value">0</strong>
-                        </td>
-
-                        <td>
-                            <button class="view-location-button">
-                                Ver inventario
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <div class="location-cell">
-                                <div class="location-icon">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <strong>B-01</strong>
-                            </div>
-                        </td>
-
-                        <td>
-                            <span class="code-badge">0 códigos</span>
-                        </td>
-
-                        <td>
-                            <strong class="quantity-value">0</strong>
-                        </td>
-
-                        <td>
-                            <button class="view-location-button">
-                                Ver inventario
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </td>
                     </tr>
 
                 </tbody>
@@ -432,28 +728,52 @@ creado por cano
     </section>
 
 </div>
-<!-- =========================
-     DETALLE DE UBICACIÓN
-========================= -->
-<div id="locationDetailPage" class="location-detail-page">
 
-    <!-- ENCABEZADO -->
+
+
+<!-- ==================================================
+     DETALLE DE UBICACIÓN
+================================================== -->
+
+<div
+    id="locationDetailPage"
+    class="location-detail-page"
+>
+
     <div class="location-detail-header">
 
-        <button class="inventory-back-button" onclick="closeLocationDetail()">
+        <button
+            type="button"
+            class="inventory-back-button"
+            onclick="closeLocationDetail()"
+        >
+
             <i class="fa-solid fa-arrow-left"></i>
+
             Volver a ubicaciones
+
         </button>
+
 
         <div class="location-detail-title">
 
             <div class="inventory-heading-icon">
+
                 <i class="fa-solid fa-location-dot"></i>
+
             </div>
 
+
             <div>
-                <h1 id="locationDetailTitle">UBICACIÓN</h1>
-                <p>Consulta los códigos registrados en esta ubicación</p>
+
+                <h1 id="locationDetailTitle">
+                    UBICACIÓN
+                </h1>
+
+                <p>
+                    Consulta los códigos registrados en esta ubicación
+                </p>
+
             </div>
 
         </div>
@@ -461,46 +781,55 @@ creado por cano
     </div>
 
 
-    <!-- RESUMEN DE LA UBICACIÓN -->
+
     <section class="location-detail-stats">
 
         <div class="location-detail-stat">
+
             <span>
                 <i class="fa-solid fa-barcode"></i>
                 Códigos diferentes
             </span>
 
-            <strong id="locationDetailCodes">0</strong>
+            <strong id="locationDetailCodes">
+                0
+            </strong>
+
         </div>
 
 
         <div class="location-detail-stat">
+
             <span>
                 <i class="fa-solid fa-cubes"></i>
                 Cantidad total
             </span>
 
-            <strong id="locationDetailQuantity">0</strong>
+            <strong id="locationDetailQuantity">
+                0
+            </strong>
+
         </div>
 
     </section>
 
 
-    <!-- TABLA DE PRODUCTOS -->
+
     <section class="location-products-panel">
 
         <div class="location-products-header">
 
-            <div>
-                <h2>
-                    <i class="fa-solid fa-boxes-stacked"></i>
-                    PRODUCTOS EN ESTA UBICACIÓN
-                </h2>
+            <h2>
 
-                <p id="locationDetailSubtitle">
-                    Ubicación seleccionada
-                </p>
-            </div>
+                <i class="fa-solid fa-boxes-stacked"></i>
+
+                PRODUCTOS EN ESTA UBICACIÓN
+
+            </h2>
+
+            <p id="locationDetailSubtitle">
+                Ubicación seleccionada
+            </p>
 
         </div>
 
@@ -510,25 +839,30 @@ creado por cano
             <table class="inventory-modern-table">
 
                 <thead>
+
                     <tr>
+
                         <th>
-                            <i class="fa-solid fa-barcode"></i>
                             CÓDIGO
                         </th>
 
                         <th>
-                            <i class="fa-solid fa-cubes"></i>
                             CANTIDAD
                         </th>
+
                     </tr>
+
                 </thead>
+
 
                 <tbody id="locationDetailTable">
 
                     <tr>
+
                         <td colspan="2">
                             Selecciona una ubicación.
                         </td>
+
                     </tr>
 
                 </tbody>
@@ -541,187 +875,281 @@ creado por cano
 
 </div>
 
-<!-- ========================================
-     PÁGINA DE INCIDENCIAS
-======================================== -->
 
-<div id="incidentsPage" style="display:none;">
 
-    <button
-        type="button"
-        onclick="closeIncidents()"
-        class="inventory-back-button"
-    >
-        <i class="fa-solid fa-arrow-left"></i>
-        Inicio
-    </button>
+<!-- ==================================================
+     ENTRADAS / SALIDAS
+================================================== -->
 
-    <div style="padding:30px;">
+<div
+    id="movementsPage"
+    class="movements-page"
+>
 
-        <h1>
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            INCIDENCIAS
-        </h1>
-
-        <p>
-            Registro de incidencias de inventario
-        </p>
-
-        <hr>
-
-        <h2>Nueva incidencia</h2>
-
-        <p>Esta pantalla está funcionando correctamente.</p>
-
-    </div>
-
-</div>
-
-<!-- ========================================
-     MÓDULO ENTRADAS / SALIDAS
-======================================== -->
-<div id="movementsPage" class="movements-page">
-
-    <!-- ENCABEZADO -->
     <div class="movements-header">
 
         <div class="movements-title-area">
 
-            <button class="inventory-back-button" onclick="closeMovements()">
+            <button
+                type="button"
+                class="inventory-back-button"
+                onclick="closeMovements()"
+            >
+
                 <i class="fa-solid fa-arrow-left"></i>
+
                 Inicio
+
             </button>
 
+
             <div class="movements-title">
+
                 <div class="movements-title-icon">
+
                     <i class="fa-solid fa-right-left"></i>
+
                 </div>
 
+
                 <div>
-                    <h1>ENTRADAS / SALIDAS</h1>
-                    <p>Control y registro de movimientos de inventario</p>
+
+                    <h1>
+                        ENTRADAS / SALIDAS
+                    </h1>
+
+                    <p>
+                        Control y registro de movimientos de inventario
+                    </p>
+
                 </div>
+
             </div>
 
         </div>
 
+
         <div class="movements-user-box">
+
             <i class="fa-solid fa-user"></i>
 
             <div>
-                <small>Sesión actual</small>
-                <strong id="movementsUserName">Usuario</strong>
+
+                <small>
+                    Sesión actual
+                </small>
+
+                <strong id="movementsUserName">
+                    Usuario
+                </strong>
+
             </div>
+
         </div>
 
     </div>
 
 
-    <!-- RESUMEN -->
+
     <section class="movements-stats">
 
+
         <div class="movement-stat-card">
+
             <div class="movement-stat-icon movement-entry-icon">
+
                 <i class="fa-solid fa-arrow-down"></i>
+
             </div>
 
             <div>
-                <span>Entradas de hoy</span>
-                <strong id="todayEntries">0</strong>
-                <small>Movimientos registrados</small>
+
+                <span>
+                    Entradas de hoy
+                </span>
+
+                <strong id="todayEntries">
+                    0
+                </strong>
+
+                <small>
+                    Movimientos registrados
+                </small>
+
             </div>
+
         </div>
 
 
+
         <div class="movement-stat-card">
+
             <div class="movement-stat-icon movement-exit-icon">
+
                 <i class="fa-solid fa-arrow-up"></i>
+
             </div>
 
             <div>
-                <span>Salidas de hoy</span>
-                <strong id="todayExits">0</strong>
-                <small>Movimientos registrados</small>
+
+                <span>
+                    Salidas de hoy
+                </span>
+
+                <strong id="todayExits">
+                    0
+                </strong>
+
+                <small>
+                    Movimientos registrados
+                </small>
+
             </div>
+
         </div>
 
 
+
         <div class="movement-stat-card">
+
             <div class="movement-stat-icon movement-total-icon">
+
                 <i class="fa-solid fa-boxes-stacked"></i>
+
             </div>
 
             <div>
-                <span>Productos movidos</span>
-                <strong id="todayMovedProducts">0</strong>
-                <small>Unidades del día</small>
+
+                <span>
+                    Productos movidos
+                </span>
+
+                <strong id="todayMovedProducts">
+                    0
+                </strong>
+
+                <small>
+                    Unidades del día
+                </small>
+
             </div>
+
         </div>
+
 
 
         <div class="movement-stat-card">
+
             <div class="movement-stat-icon movement-last-icon">
+
                 <i class="fa-solid fa-clock"></i>
+
             </div>
 
             <div>
-                <span>Último movimiento</span>
-                <strong id="lastMovement">--:--</strong>
-                <small id="lastMovementText">Sin movimientos</small>
+
+                <span>
+                    Último movimiento
+                </span>
+
+                <strong id="lastMovement">
+                    --:--
+                </strong>
+
+                <small id="lastMovementText">
+                    Sin movimientos
+                </small>
+
             </div>
+
         </div>
+
 
     </section>
 
 
-    <!-- ACCIONES PRINCIPALES -->
+
     <section class="movement-actions">
 
-    
-        <button class="movement-action-card entry-action" onclick="openEntryForm()">
+
+        <button
+            type="button"
+            class="movement-action-card entry-action"
+            onclick="openEntryForm()"
+        >
 
             <div class="movement-action-icon">
+
                 <i class="fa-solid fa-arrow-down"></i>
+
             </div>
 
             <div class="movement-action-content">
-                <h2>REGISTRAR ENTRADA</h2>
-                <p>Agregar mercancía al inventario</p>
+
+                <h2>
+                    REGISTRAR ENTRADA
+                </h2>
+
+                <p>
+                    Agregar mercancía al inventario
+                </p>
+
             </div>
 
             <i class="fa-solid fa-arrow-right movement-action-arrow"></i>
+
         </button>
 
 
-        <button class="movement-action-card exit-action" onclick="openExitForm()">
+
+        <button
+            type="button"
+            class="movement-action-card exit-action"
+            onclick="openExitForm()"
+        >
+
             <div class="movement-action-icon">
+
                 <i class="fa-solid fa-arrow-up"></i>
+
             </div>
 
             <div class="movement-action-content">
-                <h2>REGISTRAR SALIDA</h2>
-                <p>Registrar mercancía que sale del inventario</p>
+
+                <h2>
+                    REGISTRAR SALIDA
+                </h2>
+
+                <p>
+                    Registrar mercancía que sale del inventario
+                </p>
+
             </div>
 
             <i class="fa-solid fa-arrow-right movement-action-arrow"></i>
+
         </button>
+
 
     </section>
 
 
-    <!-- HISTORIAL -->
+
     <section class="movement-history-panel">
 
         <div class="movement-history-header">
 
-            <div>
-                <h2>
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    HISTORIAL DE MOVIMIENTOS
-                </h2>
+            <h2>
 
-                <p>Consulta las últimas entradas y salidas registradas</p>
-            </div>
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                HISTORIAL DE MOVIMIENTOS
+
+            </h2>
+
+            <p>
+                Consulta las últimas entradas y salidas registradas
+            </p>
 
         </div>
 
@@ -731,22 +1159,29 @@ creado por cano
             <table class="movement-table">
 
                 <thead>
+
                     <tr>
+
                         <th>TIPO</th>
                         <th>CÓDIGO</th>
                         <th>UBICACIÓN</th>
                         <th>CANTIDAD</th>
                         <th>USUARIO</th>
                         <th>FECHA Y HORA</th>
+
                     </tr>
+
                 </thead>
+
 
                 <tbody id="movementsTable">
 
                     <tr>
+
                         <td colspan="6">
                             Aún no hay movimientos registrados.
                         </td>
+
                     </tr>
 
                 </tbody>
@@ -758,91 +1193,508 @@ creado por cano
     </section>
 
 </div>
-<!-- ========================================
-     FORMULARIO REGISTRAR ENTRADA
-======================================== -->
-<div id="entryFormPage" class="entry-form-page">
 
-    <!-- ENCABEZADO -->
+
+
+<!-- ==================================================
+     FORMULARIO ENTRADA
+================================================== -->
+
+<div
+    id="entryFormPage"
+    class="entry-form-page"
+>
+
     <div class="entry-form-header">
 
-        <button class="inventory-back-button" onclick="closeEntryForm()">
+        <button
+            type="button"
+            class="inventory-back-button"
+            onclick="closeEntryForm()"
+        >
+
             <i class="fa-solid fa-arrow-left"></i>
+
             Volver
+
         </button>
+
 
         <div class="entry-form-title">
 
             <div class="entry-form-title-icon">
+
                 <i class="fa-solid fa-arrow-down"></i>
+
             </div>
 
+
             <div>
-                <h1>REGISTRAR ENTRADA</h1>
-                <p>Agrega mercancía al inventario</p>
+
+                <h1>
+                    REGISTRAR ENTRADA
+                </h1>
+
+                <p>
+                    Agrega mercancía al inventario
+                </p>
+
             </div>
 
         </div>
 
     </div>
-<!-- ========================================
-     MÓDULO INCIDENCIAS
-======================================== -->
-<div id="incidentsPage" class="incidents-page">
+
+
+
+    <section class="entry-form-container">
+
+        <div class="entry-form-card">
+
+            <div class="entry-form-card-header">
+
+                <h2>
+
+                    <i class="fa-solid fa-box"></i>
+
+                    DATOS DE LA ENTRADA
+
+                </h2>
+
+                <p>
+                    Completa la información para registrar el movimiento
+                </p>
+
+            </div>
+
+
+            <div class="entry-form-grid">
+
+
+                <div class="entry-form-group">
+
+                    <label for="entryCode">
+
+                        <i class="fa-solid fa-barcode"></i>
+
+                        Código
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="entryCode"
+                        placeholder="Escanea o escribe el código"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <div class="entry-form-group">
+
+                    <label for="entryLocation">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Ubicación
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="entryLocation"
+                        placeholder="Ejemplo: A-01"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <div class="entry-form-group">
+
+                    <label for="entryQuantity">
+
+                        <i class="fa-solid fa-cubes"></i>
+
+                        Cantidad
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="entryQuantity"
+                        placeholder="Cantidad"
+                        min="1"
+                    >
+
+                </div>
+
+
+
+                <div class="entry-form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Usuario
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="entryUser"
+                        readonly
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="entry-form-actions">
+
+                <button
+                    type="button"
+                    class="entry-cancel-button"
+                    onclick="closeEntryForm()"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="entry-save-button"
+                    onclick="saveEntry()"
+                >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Guardar entrada
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- ==================================================
+     FORMULARIO SALIDA
+================================================== -->
+
+<div
+    id="exitFormPage"
+    class="exit-form-page"
+>
+
+    <div class="entry-form-header">
+
+        <button
+            type="button"
+            class="inventory-back-button"
+            onclick="closeExitForm()"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Volver
+
+        </button>
+
+
+        <div class="exit-form-title">
+
+            <div class="exit-form-title-icon">
+
+                <i class="fa-solid fa-arrow-up"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    REGISTRAR SALIDA
+                </h1>
+
+                <p>
+                    Registra mercancía que sale del inventario
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <section class="entry-form-container">
+
+        <div class="entry-form-card">
+
+            <div class="entry-form-card-header">
+
+                <h2>
+
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+
+                    DATOS DE LA SALIDA
+
+                </h2>
+
+                <p>
+                    Completa la información para registrar la salida
+                </p>
+
+            </div>
+
+
+            <div class="entry-form-grid">
+
+
+                <div class="entry-form-group">
+
+                    <label for="exitCode">
+
+                        <i class="fa-solid fa-barcode"></i>
+
+                        Código
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="exitCode"
+                        placeholder="Escanea o escribe el código"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <div class="entry-form-group">
+
+                    <label for="exitLocation">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Ubicación
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="exitLocation"
+                        placeholder="Ejemplo: A-01"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <div class="entry-form-group">
+
+                    <label for="exitQuantity">
+
+                        <i class="fa-solid fa-cubes"></i>
+
+                        Cantidad a retirar
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="exitQuantity"
+                        placeholder="Cantidad"
+                        min="1"
+                    >
+
+                </div>
+
+
+
+                <div class="entry-form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Usuario
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="exitUser"
+                        readonly
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="entry-form-actions">
+
+                <button
+                    type="button"
+                    class="entry-cancel-button"
+                    onclick="closeExitForm()"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="exit-save-button"
+                    onclick="saveExit()"
+                >
+
+                    <i class="fa-solid fa-arrow-up"></i>
+
+                    Guardar salida
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- ==================================================
+     INCIDENCIAS
+================================================== -->
+
+<div
+    id="incidentsPage"
+    class="incidents-page"
+    style="display:none;"
+>
+
 
     <!-- ENCABEZADO -->
+
     <div class="incidents-header">
 
         <div class="incidents-title-area">
 
-            <button class="inventory-back-button" onclick="closeIncidents()">
+
+            <button
+                type="button"
+                class="inventory-back-button"
+                onclick="closeIncidents()"
+            >
+
                 <i class="fa-solid fa-arrow-left"></i>
+
                 Inicio
+
             </button>
 
+
             <div class="incidents-title">
+
+
                 <div class="incidents-title-icon">
+
                     <i class="fa-solid fa-triangle-exclamation"></i>
+
                 </div>
 
+
                 <div>
-                    <h1>INCIDENCIAS</h1>
-                    <p>Registro y seguimiento de incidencias</p>
+
+                    <h1>
+                        INCIDENCIAS
+                    </h1>
+
+                    <p>
+                        Registro y seguimiento de incidencias
+                    </p>
+
                 </div>
+
+
             </div>
 
         </div>
 
+
         <div class="movements-user-box">
+
             <i class="fa-solid fa-user"></i>
 
             <div>
-                <small>Sesión actual</small>
-                <strong id="incidentsUserName">Usuario</strong>
+
+                <small>
+                    Sesión actual
+                </small>
+
+                <strong id="incidentsUserName">
+                    Usuario
+                </strong>
+
             </div>
+
         </div>
 
     </div>
 
 
+
     <!-- FORMULARIO -->
+
     <section class="incidents-form-panel">
 
+
         <div class="incidents-form-header">
+
             <div>
+
                 <h2>
+
                     <i class="fa-solid fa-file-circle-exclamation"></i>
+
                     NUEVA INCIDENCIA
+
                 </h2>
 
-                <p>Registra cualquier problema encontrado durante el inventario.</p>
+                <p>
+                    Registra cualquier problema encontrado durante el inventario.
+                </p>
+
             </div>
+
         </div>
+
 
 
         <div class="incidents-form-grid">
 
+
             <!-- CÓDIGO -->
+
             <div class="incident-field">
 
                 <label for="incidentCode">
@@ -859,7 +1711,9 @@ creado por cano
             </div>
 
 
+
             <!-- UBICACIÓN -->
+
             <div class="incident-field">
 
                 <label for="incidentLocation">
@@ -876,7 +1730,9 @@ creado por cano
             </div>
 
 
+
             <!-- TIPO -->
+
             <div class="incident-field">
 
                 <label for="incidentType">
@@ -922,7 +1778,9 @@ creado por cano
             </div>
 
 
+
             <!-- DESCRIPCIÓN -->
+
             <div class="incident-field incident-description-field">
 
                 <label for="incidentDescription">
@@ -938,12 +1796,15 @@ creado por cano
             </div>
 
 
+
             <!-- FOTOGRAFÍA -->
+
             <div class="incident-photo-field">
 
                 <label>
                     NOTA FOTOGRÁFICA
                 </label>
+
 
                 <button
                     type="button"
@@ -959,6 +1820,7 @@ creado por cano
 
                 </button>
 
+
                 <input
                     type="file"
                     id="incidentPhoto"
@@ -967,6 +1829,7 @@ creado por cano
                     style="display:none;"
                 >
 
+
                 <div
                     id="incidentPhotoPreview"
                     class="incident-photo-preview"
@@ -974,10 +1837,12 @@ creado por cano
 
             </div>
 
+
         </div>
 
 
-        <!-- BOTÓN GUARDAR -->
+
+        <!-- GUARDAR -->
 
         <div class="incidents-save-area">
 
@@ -995,20 +1860,26 @@ creado por cano
 
         </div>
 
+
     </section>
+
 
 
     <!-- HISTORIAL -->
 
     <section class="incidents-history-panel">
 
+
         <div class="incidents-history-header">
 
             <div>
 
                 <h2>
+
                     <i class="fa-solid fa-clock-rotate-left"></i>
+
                     HISTORIAL DE INCIDENCIAS
+
                 </h2>
 
                 <p>
@@ -1020,6 +1891,7 @@ creado por cano
         </div>
 
 
+
         <div class="incidents-table-container">
 
             <table class="incidents-table">
@@ -1027,17 +1899,43 @@ creado por cano
                 <thead>
 
                     <tr>
-                        <th>FECHA</th>
-                        <th>UBICACIÓN</th>
-                        <th>CÓDIGO</th>
-                        <th>TIPO</th>
-                        <th>DESCRIPCIÓN</th>
-                        <th>USUARIO</th>
-                        <th>FOTO</th>
-                        <th>ESTATUS</th>
+
+                        <th>
+                            FECHA
+                        </th>
+
+                        <th>
+                            UBICACIÓN
+                        </th>
+
+                        <th>
+                            CÓDIGO
+                        </th>
+
+                        <th>
+                            TIPO
+                        </th>
+
+                        <th>
+                            DESCRIPCIÓN
+                        </th>
+
+                        <th>
+                            USUARIO
+                        </th>
+
+                        <th>
+                            FOTO
+                        </th>
+
+                        <th>
+                            ESTATUS
+                        </th>
+
                     </tr>
 
                 </thead>
+
 
                 <tbody id="incidentsTable">
 
@@ -1055,524 +1953,329 @@ creado por cano
 
         </div>
 
-    </section>
-
-</div>
-
-    <!-- FORMULARIO -->
-    <section class="entry-form-container">
-
-        <div class="entry-form-card">
-
-            <div class="entry-form-card-header">
-                <h2>
-                    <i class="fa-solid fa-box"></i>
-                    DATOS DE LA ENTRADA
-                </h2>
-
-                <p>Completa la información para registrar el movimiento</p>
-            </div>
-
-
-            <div class="entry-form-grid">
-
-                <!-- CÓDIGO -->
-                <div class="entry-form-group">
-                    <label for="entryCode">
-                        <i class="fa-solid fa-barcode"></i>
-                        Código
-                    </label>
-
-                    <input
-                        type="text"
-                        id="entryCode"
-                        placeholder="Escanea o escribe el código"
-                        autocomplete="off"
-                    >
-                </div>
-
-
-                <!-- UBICACIÓN -->
-                <div class="entry-form-group">
-                    <label for="entryLocation">
-                        <i class="fa-solid fa-location-dot"></i>
-                        Ubicación
-                    </label>
-
-                    <input
-                        type="text"
-                        id="entryLocation"
-                        placeholder="Ejemplo: A-01"
-                        autocomplete="off"
-                    >
-                </div>
-
-
-                <!-- CANTIDAD -->
-                <div class="entry-form-group">
-                    <label for="entryQuantity">
-                        <i class="fa-solid fa-cubes"></i>
-                        Cantidad
-                    </label>
-
-                    <input
-                        type="number"
-                        id="entryQuantity"
-                        placeholder="Cantidad"
-                        min="1"
-                    >
-                </div>
-
-
-                <!-- USUARIO -->
-                <div class="entry-form-group">
-                    <label>
-                        <i class="fa-solid fa-user"></i>
-                        Usuario
-                    </label>
-
-                    <input
-                        type="text"
-                        id="entryUser"
-                        readonly
-                        value=""
-                    >
-                </div>
-
-            </div>
-
-
-            <!-- BOTONES -->
-            <div class="entry-form-actions">
-
-                <button
-                    type="button"
-                    class="entry-cancel-button"
-                    onclick="closeEntryForm()"
-                >
-                    Cancelar
-                </button>
-
-                <button
-                    type="button"
-                    class="entry-save-button"
-                    onclick="saveEntry()"
-                >
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    Guardar entrada
-                </button>
-
-            </div>
-
-        </div>
 
     </section>
 
-</div>
-<!-- ========================================
-     FORMULARIO REGISTRAR SALIDA
-======================================== -->
-<div id="exitFormPage" class="exit-form-page">
-
-    <div class="entry-form-header">
-
-        <button class="inventory-back-button" onclick="closeExitForm()">
-            <i class="fa-solid fa-arrow-left"></i>
-            Volver
-        </button>
-
-        <div class="exit-form-title">
-
-            <div class="exit-form-title-icon">
-                <i class="fa-solid fa-arrow-up"></i>
-            </div>
-
-            <div>
-                <h1>REGISTRAR SALIDA</h1>
-                <p>Registra mercancía que sale del inventario</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <section class="entry-form-container">
-
-        <div class="entry-form-card">
-
-            <div class="entry-form-card-header">
-                <h2>
-                    <i class="fa-solid fa-truck-ramp-box"></i>
-                    DATOS DE LA SALIDA
-                </h2>
-
-                <p>Completa la información para registrar la salida</p>
-            </div>
-
-
-            <div class="entry-form-grid">
-
-                <!-- CÓDIGO -->
-                <div class="entry-form-group">
-                    <label for="exitCode">
-                        <i class="fa-solid fa-barcode"></i>
-                        Código
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exitCode"
-                        placeholder="Escanea o escribe el código"
-                        autocomplete="off"
-                    >
-                </div>
-
-
-                <!-- UBICACIÓN -->
-                <div class="entry-form-group">
-                    <label for="exitLocation">
-                        <i class="fa-solid fa-location-dot"></i>
-                        Ubicación
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exitLocation"
-                        placeholder="Ejemplo: A-01"
-                        autocomplete="off"
-                    >
-                </div>
-
-
-                <!-- CANTIDAD -->
-                <div class="entry-form-group">
-                    <label for="exitQuantity">
-                        <i class="fa-solid fa-cubes"></i>
-                        Cantidad a retirar
-                    </label>
-
-                    <input
-                        type="number"
-                        id="exitQuantity"
-                        placeholder="Cantidad"
-                        min="1"
-                    >
-                </div>
-
-
-                <!-- USUARIO -->
-                <div class="entry-form-group">
-                    <label>
-                        <i class="fa-solid fa-user"></i>
-                        Usuario
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exitUser"
-                        readonly
-                        value=""
-                    >
-                </div>
-
-            </div>
-
-
-            <div class="entry-form-actions">
-
-                <button
-                    type="button"
-                    class="entry-cancel-button"
-                    onclick="closeExitForm()"
-                >
-                    Cancelar
-                </button>
-
-                <button
-                    type="button"
-                    class="exit-save-button"
-                    onclick="saveExit()"
-                >
-                    <i class="fa-solid fa-arrow-up"></i>
-                    Guardar salida
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
 
 </div>
 
-<footer>
 
 
+<!-- ==================================================
+     ESCANEAR
+================================================== -->
 
-    <!-- MODULO ESCANEAR -->
-    <section id="scannerPage" class="scanner-page">
-
-        <div class="scanner-top">
-
-            <button class="back-button" onclick="closeScanner()">
-                ← Volver al inicio
-            </button>
-
-            <div class="scanner-title">
-                <i class="fa-solid fa-barcode"></i>
-
-                <div>
-                    <h2>ESCANEAR</h2>
-                    <p>Escanear códigos de productos</p>
-                </div>
-            </div>
-
-        </div>
+<section
+    id="scannerPage"
+    class="scanner-page"
+>
 
 
-        <div class="scanner-content">
+    <div class="scanner-top">
 
-    <!-- UBICACION -->
-    <div class="location-box">
 
-        <h3>📍 1. Escanear ubicación</h3>
-
-        <label for="locationInput">
-            Escanea o escribe la ubicación
-        </label>
-
-        <input
-            type="text"
-            id="locationInput"
-            placeholder="Ejemplo: A-01-01"
-            autocomplete="off"
+        <button
+            type="button"
+            class="back-button"
+            onclick="closeScanner()"
         >
-
-        <button class="location-button" onclick="confirmLocation()">
-            <i class="fa-solid fa-location-dot"></i>
-            CONFIRMAR UBICACIÓN
-        </button>
-
-        <p id="locationStatus" class="location-status">
-            ⚠️ Primero confirma una ubicación
-        </p>
-
-    </div>
-
-
-    <!-- ESCANEAR CODIGO -->
-    <div class="scan-box">
-
-        <h3>📦 2. Escanear producto</h3>
-
-        <p class="current-location">
-            Ubicación actual:
-            <strong id="currentLocation">Sin ubicación</strong>
-        </p>
-
-        <label for="barcodeInput">
-            Escanea o escribe el código
-        </label>
-
-        <input
-            type="text"
-            id="barcodeInput"
-            placeholder="Primero selecciona una ubicación..."
-            autocomplete="off"
-            disabled
-        >
-
-        <button class="add-button" onclick="addBarcode()" disabled>
-            <i class="fa-solid fa-plus"></i>
-            AGREGAR
-        </button>
-
-    </div>
-
-</div>
-
-
-            <div class="scan-summary">
-
-                <h3>Resumen del escaneo</h3>
-
-                <div class="summary-grid">
-
-                    <div class="summary-card">
-                        <p>Códigos únicos</p>
-                        <strong id="uniqueCodes">0</strong>
-                    </div>
-
-                    <div class="summary-card">
-                        <p>Total escaneados</p>
-                        <strong id="totalBoxes">0</strong>
-                    </div>
-
-                    <div class="summary-card">
-                        <p>Usuario</p>
-                        <strong>Cano</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="scanned-list">
-
-            <div class="list-header">
-                <h3>Lista de códigos escaneados</h3>
-
-                <button class="clear-button" onclick="clearAll()">
-                    <i class="fa-solid fa-trash"></i>
-                    LIMPIAR TODO
-                </button>
-            </div>
-
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Ubicación</th>
-                            <th>Código</th>
-                            <th>Cantidad</th>
-                            <th>Fecha y hora</th>
-                            <th>Usuario</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="barcodeTable">
-                    </tbody>
-
-                </table>
-
-            </div>
-
-
-            <button class="save-button" onclick="saveRecords()">
-                <i class="fa-solid fa-floppy-disk"></i>
-                GUARDAR REGISTRO
-            </button>
-
-        </div>
-
-    </section>
-<!-- =========================
-     MODULO REPORTES
-========================= -->
-<section id="reportsPage" class="reports-page">
-
-    <div class="reports-top">
-
-        <button class="back-button" onclick="closeReports()">
             ← Volver al inicio
         </button>
 
-        <div class="reports-title">
-            <i class="fa-solid fa-chart-column"></i>
+
+        <div class="scanner-title">
+
+            <i class="fa-solid fa-barcode"></i>
 
             <div>
-                <h2>REPORTES</h2>
-                <p>Consulta el historial y resumen del inventario</p>
+
+                <h2>
+                    ESCANEAR
+                </h2>
+
+                <p>
+                    Escanear códigos de productos
+                </p>
+
             </div>
+
         </div>
 
     </div>
+
+
+
+    <div class="scanner-content">
+
+
+        <!-- UBICACIÓN -->
+
+        <div class="location-box">
+
+            <h3>
+                📍 1. Escanear ubicación
+            </h3>
+
+            <label for="locationInput">
+                Escanea o escribe la ubicación
+            </label>
+
+            <input
+                type="text"
+                id="locationInput"
+                placeholder="Ejemplo: A-01-01"
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                class="location-button"
+                onclick="confirmLocation()"
+            >
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                CONFIRMAR UBICACIÓN
+
+            </button>
+
+
+            <p
+                id="locationStatus"
+                class="location-status"
+            >
+                ⚠️ Primero confirma una ubicación
+            </p>
+
+        </div>
+
+
+
+        <!-- PRODUCTO -->
+
+        <div class="scan-box">
+
+            <h3>
+                📦 2. Escanear producto
+            </h3>
+
+
+            <p class="current-location">
+
+                Ubicación actual:
+
+                <strong id="currentLocation">
+                    Sin ubicación
+                </strong>
+
+            </p>
+
+
+            <label for="barcodeInput">
+                Escanea o escribe el código
+            </label>
+
+
+            <input
+                type="text"
+                id="barcodeInput"
+                placeholder="Primero selecciona una ubicación..."
+                autocomplete="off"
+                disabled
+            >
+
+
+            <button
+                type="button"
+                class="add-button"
+                onclick="addBarcode()"
+                disabled
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                AGREGAR
+
+            </button>
+
+        </div>
+
+
+    </div>
+
 
 
     <!-- RESUMEN -->
-    <div class="reports-summary">
 
-        <div class="report-card">
-            <p>Total de registros</p>
-            <strong id="reportTotalRecords">0</strong>
-        </div>
+    <div class="scan-summary">
 
-        <div class="report-card">
-            <p>Total de productos</p>
-            <strong id="reportTotalProducts">0</strong>
-        </div>
+        <h3>
+            Resumen del escaneo
+        </h3>
 
-        <div class="report-card">
-            <p>Total de ubicaciones</p>
-            <strong id="reportTotalLocations">0</strong>
+
+        <div class="summary-grid">
+
+
+            <div class="summary-card">
+
+                <p>
+                    Códigos únicos
+                </p>
+
+                <strong id="uniqueCodes">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <p>
+                    Total escaneados
+                </p>
+
+                <strong id="totalBoxes">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <p>
+                    Usuario
+                </p>
+
+                <strong id="scannerUserName">
+                    Cano
+                </strong>
+
+            </div>
+
+
         </div>
 
     </div>
 
 
-    <!-- HISTORIAL -->
-    <div class="reports-history">
 
-        <div class="reports-history-header">
-            <h3>📋 Historial de registros</h3>
+    <!-- LISTA -->
 
-            <button class="refresh-button" onclick="loadReports()">
-                <i class="fa-solid fa-rotate"></i>
-                ACTUALIZAR
+    <div class="scanned-list">
+
+
+        <div class="list-header">
+
+            <h3>
+                Lista de códigos escaneados
+            </h3>
+
+
+            <button
+                type="button"
+                class="clear-button"
+                onclick="clearAll()"
+            >
+
+                <i class="fa-solid fa-trash"></i>
+
+                LIMPIAR TODO
+
             </button>
+
         </div>
+
+
 
         <div class="table-container">
 
             <table>
 
                 <thead>
+
                     <tr>
+
+                        <th>#</th>
                         <th>Ubicación</th>
                         <th>Código</th>
                         <th>Cantidad</th>
                         <th>Fecha y hora</th>
                         <th>Usuario</th>
+                        <th>Acción</th>
+
                     </tr>
+
                 </thead>
 
-                <tbody id="reportsTable">
-                    <!-- Aquí aparecerán los registros -->
+
+                <tbody id="barcodeTable">
                 </tbody>
 
             </table>
 
         </div>
 
+
+
+        <button
+            type="button"
+            class="save-button"
+            onclick="saveRecords()"
+        >
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            GUARDAR REGISTRO
+
+        </button>
+
+
     </div>
+
 
 </section>
 
-    <footer id="footer">
-        © 2026 WENYAO | Sistema de Inventario
-    </footer>
 
 
-    <script src="script.js"></script>
+<!-- ==================================================
+     REPORTES
+================================================== -->
 
-</body>
-</html>
-<!-- =========================================
-     CONFIGURACIÓN
-========================================= -->
+<section
+    id="reportsPage"
+    class="reports-page"
+>
 
-<section id="settingsPage" class="page-section" style="display: none;">
 
-    <div class="settings-header">
+    <div class="reports-top">
 
-        <div class="settings-title">
 
-            <div class="settings-title-icon">
-                <i class="fa-solid fa-gear"></i>
-            </div>
+        <button
+            type="button"
+            class="back-button"
+            onclick="closeReports()"
+        >
+            ← Volver al inicio
+        </button>
+
+
+        <div class="reports-title">
+
+            <i class="fa-solid fa-chart-column"></i>
 
             <div>
-                <h1>CONFIGURACIÓN</h1>
-                <p>Administra las preferencias de tu aplicación</p>
+
+                <h2>
+                    REPORTES
+                </h2>
+
+                <p>
+                    Consulta el historial y resumen del inventario
+                </p>
+
             </div>
 
         </div>
@@ -1580,91 +2283,325 @@ creado por cano
     </div>
 
 
+
+    <div class="reports-summary">
+
+
+        <div class="report-card">
+
+            <p>
+                Total de registros
+            </p>
+
+            <strong id="reportTotalRecords">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <p>
+                Total de productos
+            </p>
+
+            <strong id="reportTotalProducts">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <p>
+                Total de ubicaciones
+            </p>
+
+            <strong id="reportTotalLocations">
+                0
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="reports-history">
+
+
+        <div class="reports-history-header">
+
+            <h3>
+                📋 Historial de registros
+            </h3>
+
+
+            <button
+                type="button"
+                class="refresh-button"
+                onclick="loadReports()"
+            >
+
+                <i class="fa-solid fa-rotate"></i>
+
+                ACTUALIZAR
+
+            </button>
+
+        </div>
+
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Ubicación
+                        </th>
+
+                        <th>
+                            Código
+                        </th>
+
+                        <th>
+                            Cantidad
+                        </th>
+
+                        <th>
+                            Fecha y hora
+                        </th>
+
+                        <th>
+                            Usuario
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="reportsTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     CONFIGURACIÓN
+================================================== -->
+
+<section
+    id="settingsPage"
+    class="page-section"
+    style="display:none;"
+>
+
+
+    <div class="settings-header">
+
+        <div class="settings-title">
+
+            <div class="settings-title-icon">
+
+                <i class="fa-solid fa-gear"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    CONFIGURACIÓN
+                </h1>
+
+                <p>
+                    Administra las preferencias de tu aplicación
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="inventory-back-button"
+            onclick="closeSettings()"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Inicio
+
+        </button>
+
+    </div>
+
+
+
     <div class="settings-container">
 
-        <!-- MENÚ LATERAL -->
+
+        <!-- MENÚ -->
+
         <aside class="settings-sidebar">
 
-            <button class="settings-menu-item active"
-                    onclick="openSettingsTab('profile')">
+
+            <button
+                type="button"
+                class="settings-menu-item active"
+                onclick="openSettingsTab('profile')"
+            >
 
                 <i class="fa-solid fa-user"></i>
-                <span>Mi perfil</span>
+
+                <span>
+                    Mi perfil
+                </span>
 
             </button>
 
 
-            <button class="settings-menu-item"
-                    onclick="openSettingsTab('company')">
+
+            <button
+                type="button"
+                class="settings-menu-item"
+                onclick="openSettingsTab('company')"
+            >
 
                 <i class="fa-solid fa-building"></i>
-                <span>Empresa</span>
+
+                <span>
+                    Empresa
+                </span>
 
             </button>
 
 
-            <button class="settings-menu-item"
-                    onclick="openSettingsTab('inventory')">
+
+            <button
+                type="button"
+                class="settings-menu-item"
+                onclick="openSettingsTab('inventory')"
+            >
 
                 <i class="fa-solid fa-boxes-stacked"></i>
-                <span>Inventario</span>
+
+                <span>
+                    Inventario
+                </span>
 
             </button>
 
 
-            <button class="settings-menu-item"
-                    onclick="openSettingsTab('notifications')">
+
+            <button
+                type="button"
+                class="settings-menu-item"
+                onclick="openSettingsTab('notifications')"
+            >
 
                 <i class="fa-solid fa-bell"></i>
-                <span>Notificaciones</span>
+
+                <span>
+                    Notificaciones
+                </span>
 
             </button>
 
 
-            <button class="settings-menu-item"
-                    onclick="openSettingsTab('appearance')">
+
+            <button
+                type="button"
+                class="settings-menu-item"
+                onclick="openSettingsTab('appearance')"
+            >
 
                 <i class="fa-solid fa-palette"></i>
-                <span>Apariencia</span>
+
+                <span>
+                    Apariencia
+                </span>
 
             </button>
 
 
-            <button class="settings-menu-item"
-                    onclick="openSettingsTab('security')">
+
+            <button
+                type="button"
+                class="settings-menu-item"
+                onclick="openSettingsTab('security')"
+            >
 
                 <i class="fa-solid fa-shield-halved"></i>
-                <span>Seguridad</span>
+
+                <span>
+                    Seguridad
+                </span>
 
             </button>
+
 
         </aside>
 
 
+
         <!-- CONTENIDO -->
+
         <main class="settings-content">
 
+
             <!-- PERFIL -->
-            <div id="settings-profile"
-                 class="settings-tab active">
+
+            <div
+                id="settings-profile"
+                class="settings-tab active"
+            >
 
                 <div class="settings-section-header">
 
                     <h2>
+
                         <i class="fa-solid fa-user"></i>
+
                         Mi perfil
+
                     </h2>
 
-                    <p>Administra tu información personal</p>
+                    <p>
+                        Administra tu información personal
+                    </p>
 
                 </div>
 
 
                 <div class="settings-card">
 
+
                     <div class="settings-form-group">
 
-                        <label>Nombre de usuario</label>
+                        <label>
+                            Nombre de usuario
+                        </label>
 
                         <input
                             type="text"
@@ -1675,9 +2612,12 @@ creado por cano
                     </div>
 
 
+
                     <div class="settings-form-group">
 
-                        <label>Rol</label>
+                        <label>
+                            Rol
+                        </label>
 
                         <input
                             type="text"
@@ -1689,110 +2629,187 @@ creado por cano
                     </div>
 
 
-                    <button class="settings-save-button"
-                            onclick="saveProfileSettings()">
+
+                    <button
+                        type="button"
+                        class="settings-save-button"
+                        onclick="saveProfileSettings()"
+                    >
 
                         <i class="fa-solid fa-floppy-disk"></i>
+
                         Guardar cambios
 
                     </button>
 
+
                 </div>
 
             </div>
+
 
 
             <!-- EMPRESA -->
-            <div id="settings-company"
-                 class="settings-tab">
+
+            <div
+                id="settings-company"
+                class="settings-tab"
+            >
 
                 <div class="settings-section-header">
 
                     <h2>
+
                         <i class="fa-solid fa-building"></i>
+
                         Empresa
+
                     </h2>
 
-                    <p>Configura la información general</p>
+                    <p>
+                        Configura la información general
+                    </p>
 
                 </div>
 
             </div>
+
 
 
             <!-- INVENTARIO -->
-            <div id="settings-inventory"
-                 class="settings-tab">
+
+            <div
+                id="settings-inventory"
+                class="settings-tab"
+            >
 
                 <div class="settings-section-header">
 
                     <h2>
+
                         <i class="fa-solid fa-boxes-stacked"></i>
+
                         Inventario
+
                     </h2>
 
-                    <p>Administra las opciones del inventario</p>
+                    <p>
+                        Administra las opciones del inventario
+                    </p>
 
                 </div>
 
             </div>
+
 
 
             <!-- NOTIFICACIONES -->
-            <div id="settings-notifications"
-                 class="settings-tab">
+
+            <div
+                id="settings-notifications"
+                class="settings-tab"
+            >
 
                 <div class="settings-section-header">
 
                     <h2>
+
                         <i class="fa-solid fa-bell"></i>
+
                         Notificaciones
+
                     </h2>
 
-                    <p>Configura tus alertas</p>
+                    <p>
+                        Configura tus alertas
+                    </p>
 
                 </div>
 
             </div>
+
 
 
             <!-- APARIENCIA -->
-            <div id="settings-appearance"
-                 class="settings-tab">
+
+            <div
+                id="settings-appearance"
+                class="settings-tab"
+            >
 
                 <div class="settings-section-header">
 
                     <h2>
+
                         <i class="fa-solid fa-palette"></i>
+
                         Apariencia
+
                     </h2>
 
-                    <p>Personaliza el aspecto de WENYAO</p>
+                    <p>
+                        Personaliza el aspecto de WENYAO
+                    </p>
 
                 </div>
 
             </div>
+
 
 
             <!-- SEGURIDAD -->
-            <div id="settings-security"
-                 class="settings-tab">
+
+            <div
+                id="settings-security"
+                class="settings-tab"
+            >
 
                 <div class="settings-section-header">
 
                     <h2>
+
                         <i class="fa-solid fa-shield-halved"></i>
+
                         Seguridad
+
                     </h2>
 
-                    <p>Administra las opciones de seguridad</p>
+                    <p>
+                        Administra las opciones de seguridad
+                    </p>
 
                 </div>
 
             </div>
+
 
         </main>
 
     </div>
 
 </section>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer id="footer">
+
+    © 2026 WENYAO | Sistema de Inventario
+
+</footer>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
