@@ -2474,35 +2474,177 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function openIncidents() {
 
-    const incidentsPage =
-        document.getElementById("incidentsPage");
+    const homePage = document.getElementById("homePage");
+    const incidentsPage = document.getElementById("incidentsPage");
+    const footer = document.getElementById("footer");
 
     if (!incidentsPage) {
-
-        alert("No se encontró la página de Incidencias");
-
+        alert("No se encontró la pantalla de Incidencias.");
         return;
     }
 
+    // Ocultar inicio
+    if (homePage) {
+        homePage.style.display = "none";
+    }
+
+    // Ocultar footer
+    if (footer) {
+        footer.style.display = "none";
+    }
+
+    // Mostrar incidencias
     incidentsPage.style.display = "block";
+    incidentsPage.classList.add("active");
 
 }
 
+
+// ========================================
+// CERRAR INCIDENCIAS
+// ========================================
 
 function closeIncidents() {
 
     const incidentsPage =
         document.getElementById("incidentsPage");
 
+    const homePage =
+        document.getElementById("homePage");
+
+    const footer =
+        document.getElementById("footer");
+
+    // Ocultar Incidencias
     if (incidentsPage) {
         incidentsPage.style.display = "none";
+        incidentsPage.classList.remove("active");
     }
 
-    // Regresar al menú principal
-    const homePage =
-        document.querySelector(".home-page");
-
+    // Mostrar Inicio
     if (homePage) {
         homePage.style.display = "block";
     }
-}  
+
+    // Mostrar footer
+    if (footer) {
+        footer.style.display = "block";
+    }
+
+}
+
+// ========================================
+// GUARDAR INCIDENCIA DESDE WENYAO
+// ========================================
+
+async function saveIncidentFromWenyao() {
+
+    const code = document.getElementById("incidentCode").value.trim();
+    const location = document.getElementById("incidentLocation").value.trim();
+    const type = document.getElementById("incidentType").value;
+    const description = document.getElementById("incidentDescription").value.trim();
+
+    // USUARIO ACTUAL
+    const user = currentUser || "Usuario";
+    const role = currentRole || "";
+
+    // VALIDACIONES
+    if (!location) {
+        alert("⚠️ Ingresa o escanea la ubicación.");
+        document.getElementById("incidentLocation").focus();
+        return;
+    }
+
+    if (!code) {
+        alert("⚠️ Ingresa o escanea el código.");
+        document.getElementById("incidentCode").focus();
+        return;
+    }
+
+    if (!type) {
+        alert("⚠️ Selecciona el tipo de incidencia.");
+        document.getElementById("incidentType").focus();
+        return;
+    }
+
+    if (!description) {
+        alert("⚠️ Escribe una descripción.");
+        document.getElementById("incidentDescription").focus();
+        return;
+    }
+
+    // BOTÓN
+    const button = document.querySelector(
+        '#incidentsPage button[onclick="saveIncidentFromWenyao()"]'
+    );
+
+    if (button) {
+        button.disabled = true;
+        button.innerHTML = "⏳ Guardando...";
+    }
+
+    try {
+
+        const response = await fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "saveIncident",
+                location: location,
+                code: code,
+                type: type,
+                description: description,
+                user: user,
+                role: role,
+                status: "ABIERTA"
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(
+                data.error || "No se pudo guardar la incidencia."
+            );
+        }
+
+        // CONFIRMACIÓN
+        alert("✅ Incidencia guardada correctamente.");
+
+        // LIMPIAR FORMULARIO
+        document.getElementById("incidentCode").value = "";
+        document.getElementById("incidentLocation").value = "";
+        document.getElementById("incidentType").value = "";
+        document.getElementById("incidentDescription").value = "";
+
+        // LIMPIAR FOTO
+        const photoInput = document.getElementById("incidentPhoto");
+        const photoPreview = document.getElementById("incidentPhotoPreview");
+
+        if (photoInput) {
+            photoInput.value = "";
+        }
+
+        if (photoPreview) {
+            photoPreview.innerHTML = "";
+        }
+
+        // ENFOCAR UBICACIÓN PARA LA SIGUIENTE INCIDENCIA
+        document.getElementById("incidentLocation").focus();
+
+    } catch (error) {
+
+        console.error("Error guardando incidencia:", error);
+
+        alert(
+            "❌ No se pudo guardar la incidencia.\n\n" +
+            error.message
+        );
+
+    } finally {
+
+        if (button) {
+            button.disabled = false;
+            button.innerHTML = "💾 Guardar incidencia";
+        }
+    }
+}
