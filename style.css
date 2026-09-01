@@ -2526,3 +2526,459 @@ footer {
     }
 
 }
+/* ========================================
+   MÓDULO INCIDENCIAS
+======================================== */
+
+.incidents-page {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.incidents-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.incidents-title-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.incidents-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.incidents-title h1 {
+    margin: 0;
+}
+
+.incidents-title p {
+    margin: 5px 0 0;
+}
+
+.incidents-title-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.incidents-form-panel,
+.incidents-history-panel {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 18px;
+}
+
+.incidents-form-header,
+.incidents-history-header {
+    margin-bottom: 20px;
+}
+
+.incidents-form-header h2,
+.incidents-history-header h2 {
+    margin: 0 0 8px;
+}
+
+.incidents-form-header p,
+.incidents-history-header p {
+    margin: 0;
+}
+
+.incidents-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.incident-field,
+.incident-photo-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.incident-field label,
+.incident-photo-field label {
+    font-weight: 700;
+}
+
+.incident-field input,
+.incident-field select,
+.incident-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.incident-description-field {
+    grid-column: 1 / -1;
+}
+
+.incident-photo-field {
+    grid-column: 1 / -1;
+}
+
+.incident-photo-button {
+    width: 100%;
+    min-height: 55px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.incident-photo-button i {
+    margin-right: 8px;
+}
+
+.incident-photo-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.incident-photo-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 12px;
+}
+
+.incidents-save-area {
+    margin-top: 25px;
+    text-align: right;
+}
+
+.incident-save-button {
+    border: none;
+    border-radius: 12px;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.incidents-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.incidents-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.incidents-table th,
+.incidents-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+@media (max-width: 700px) {
+
+    .incidents-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .incidents-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .incident-description-field,
+    .incident-photo-field {
+        grid-column: auto;
+    }
+
+    .incidents-title-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+/* ========================================
+   WENYAO — CENTRO DE INCIDENCIAS
+   DISEÑO ESPECIAL
+======================================== */
+
+.incidents-page {
+    background: #eef2f6;
+    min-height: 100vh;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   ENCABEZADO ESPECIAL
+======================================== */
+
+.incidents-header {
+    background: #1f2937;
+    color: white;
+    padding: 20px 24px;
+    border-radius: 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+.incidents-title-area {
+    gap: 18px;
+}
+
+.incidents-title-icon {
+    width: 58px;
+    height: 58px;
+    background: #f59e0b;
+    color: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(245,158,11,.35);
+}
+
+.incidents-title h1 {
+    color: white;
+    font-size: 27px;
+    letter-spacing: .5px;
+}
+
+.incidents-title p {
+    color: #d1d5db;
+}
+
+
+/* ========================================
+   FORMULARIO
+======================================== */
+
+.incidents-form-panel {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.incidents-form-header {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.incidents-form-header h2 {
+    color: #1f2937;
+    font-size: 19px;
+}
+
+.incidents-form-header h2 i {
+    color: #f59e0b;
+}
+
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+.incident-field {
+    position: relative;
+}
+
+.incident-field label,
+.incident-photo-field label {
+    color: #374151;
+    font-size: 11px;
+    letter-spacing: .7px;
+}
+
+.incident-field input,
+.incident-field select,
+.incident-field textarea {
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 11px;
+    transition: all .2s ease;
+}
+
+.incident-field input:focus,
+.incident-field select:focus,
+.incident-field textarea:focus {
+    background: white;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245,158,11,.12);
+}
+
+
+/* ========================================
+   FOTOGRAFÍA — PROTAGONISTA
+======================================== */
+
+.incident-photo-field {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.incident-photo-field label {
+    color: #1f2937;
+}
+
+.incident-photo-button {
+    background: #111827;
+    color: white;
+    min-height: 90px;
+    border-radius: 13px;
+    border: none;
+    transition: all .2s ease;
+}
+
+.incident-photo-button:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+.incident-photo-button i {
+    color: #fbbf24;
+    font-size: 27px;
+}
+
+.incident-photo-preview {
+    min-height: 10px;
+    margin-top: 12px;
+}
+
+.incident-photo-preview img {
+    border: 3px solid white;
+    box-shadow: 0 5px 18px rgba(0,0,0,.15);
+}
+
+
+/* ========================================
+   GUARDAR
+======================================== */
+
+.incidents-save-area {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.incident-save-button {
+    background: #f59e0b;
+    color: #111827;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 12px;
+    font-weight: 900;
+    box-shadow: 0 5px 15px rgba(245,158,11,.25);
+    transition: all .2s ease;
+}
+
+.incident-save-button:hover {
+    background: #d97706;
+    color: white;
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   HISTORIAL
+======================================== */
+
+.incidents-history-panel {
+    background: #111827;
+    color: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+.incidents-history-header h2 {
+    color: white;
+}
+
+.incidents-history-header h2 i {
+    color: #fbbf24;
+}
+
+.incidents-history-header p {
+    color: #9ca3af;
+}
+
+
+/* ========================================
+   TABLA
+======================================== */
+
+.incidents-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.incidents-table th {
+    background: #374151;
+    color: white;
+    font-size: 11px;
+    letter-spacing: .5px;
+}
+
+.incidents-table td {
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.incidents-table tbody tr:hover {
+    background: #fffbeb;
+}
+
+
+/* ========================================
+   PDA
+======================================== */
+
+@media (max-width: 700px) {
+
+    .incidents-page {
+        padding: 12px;
+    }
+
+    .incidents-header {
+        padding: 16px;
+    }
+
+    .incidents-title h1 {
+        font-size: 21px;
+    }
+
+    .incidents-form-panel,
+    .incidents-history-panel {
+        padding: 16px;
+    }
+
+    .incident-photo-button {
+        min-height: 115px;
+    }
+
+    .incident-save-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
